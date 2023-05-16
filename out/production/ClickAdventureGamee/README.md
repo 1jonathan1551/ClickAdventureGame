@@ -11,7 +11,6 @@ Jonathan's Point and click adventure game where u click to travel screen to scre
 * Have information show on the screen to identify some buttons
 * Make the input controls on the buttons switch images on background
 * buttons also switch character position
-* 
 
 
 

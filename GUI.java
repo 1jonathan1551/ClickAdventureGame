@@ -1,5 +1,5 @@
 import javax.swing.*;
-class gui{
+class Frrame{
     public static void main(String args[]){
         JFrame frame = new JFrame("GUI");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
