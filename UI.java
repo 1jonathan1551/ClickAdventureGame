@@ -5,12 +5,15 @@ public class UI {
     GameManager gm;
     JFrame window;
     public JTextArea messageText;
+    public JPanel bgPanel[] = new JPanel[10];
+    public JLabel bgLabel[] = new JLabel[10];
 
     public UI(GameManager gm){
 
         this.gm = gm;
 
         createMainField();
+        createBackground();
 
         window.setVisible(true);
     }
@@ -27,10 +30,26 @@ public class UI {
         messageText.setBounds(50,400,700,150);
         messageText.setBackground(Color.black);
         messageText.setForeground(Color.white);
+        messageText.setOpaque(false);
         messageText.setEditable(false);
         messageText.setLineWrap(true);
         messageText.setWrapStyleWord(true);
         messageText.setFont(new Font("Book Antiqua", Font.PLAIN, 26));
         window.add(messageText);
+    }
+    public void createBackground(){
+
+        bgPanel[1] = new JPanel();
+        bgPanel[1].setBounds(40, 100, 700,350);
+        bgPanel[1].setBackground(Color.green);
+        bgPanel[1].setLayout(null);
+        window.add(bgPanel[1]);
+        bgLabel[1] = new JLabel();
+        bgLabel[1].setBounds(0,0,700,350);
+
+        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("gunman.jpg"));
+        bgLabel[1].setIcon(bgIcon);
+
+        bgPanel[1].add(bgLabel[1]);
     }
 }
