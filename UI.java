@@ -27,7 +27,7 @@ public class UI {
         window.setLayout(null);
 
         messageText = new JTextArea("Jonathan Awesome Game");
-        messageText.setBounds(50,400,700,150);
+        messageText.setBounds(230,70,700,150);
         messageText.setBackground(Color.black);
         messageText.setForeground(Color.white);
         messageText.setOpaque(false);
@@ -45,11 +45,15 @@ public class UI {
         bgPanel[1].setLayout(null);
         window.add(bgPanel[1]);
         bgLabel[1] = new JLabel();
-        bgLabel[1].setBounds(0,0,700,350);
+        bgLabel[1].setBounds(0,0,900,450);
 
-        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("gunman.jpg"));
+        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("forest.jpg"));
         bgLabel[1].setIcon(bgIcon);
-
         bgPanel[1].add(bgLabel[1]);
+    }
+    public void createObject(){
+
+        JLabel objectLabel = new JLabel();
+        objectLabel.setBounds(400,150,200,200);
     }
 }
