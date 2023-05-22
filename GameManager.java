@@ -1,6 +1,6 @@
 
 import javax.swing.*;
-class GameManager{
+class  GameManager{
 
     UI ui = new UI(this);
 

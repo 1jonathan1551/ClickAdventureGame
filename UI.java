@@ -13,7 +13,7 @@ public class UI {
         this.gm = gm;
 
         createMainField();
-        createBackground();
+        generateScreen();
 
         window.setVisible(true);
     }
@@ -27,7 +27,7 @@ public class UI {
         window.setLayout(null);
 
         messageText = new JTextArea("Jonathan Awesome Game");
-        messageText.setBounds(50,400,700,150);
+        messageText.setBounds(230,70,700,150);
         messageText.setBackground(Color.black);
         messageText.setForeground(Color.white);
         messageText.setOpaque(false);
@@ -37,19 +37,48 @@ public class UI {
         messageText.setFont(new Font("Book Antiqua", Font.PLAIN, 26));
         window.add(messageText);
     }
-    public void createBackground(){
+    public void createBackground(int bgNum, String bgFileName){
 
-        bgPanel[1] = new JPanel();
-        bgPanel[1].setBounds(40, 100, 700,350);
-        bgPanel[1].setBackground(Color.green);
-        bgPanel[1].setLayout(null);
-        window.add(bgPanel[1]);
-        bgLabel[1] = new JLabel();
-        bgLabel[1].setBounds(0,0,700,350);
+        bgPanel[bgNum] = new JPanel();
+        bgPanel[bgNum].setBounds(40, 100, 700,350);
+        bgPanel[bgNum].setBackground(Color.green);
+        bgPanel[bgNum].setLayout(null);
+        window.add(bgPanel[bgNum]);
+        bgLabel[bgNum] = new JLabel();
+        bgLabel[bgNum].setBounds(0,0,900,450);
 
-        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("gunman.jpg"));
-        bgLabel[1].setIcon(bgIcon);
+        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("forest.jpg"));
+        bgLabel[bgNum].setIcon(bgIcon);
+        bgPanel[bgNum].add(bgLabel[1]);
+    }
+    public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String chest){
 
-        bgPanel[1].add(bgLabel[1]);
+        JLabel objectLabel = new JLabel();
+        objectLabel.setBounds(objx,objy,objWidth,objHeight);
+        //objectLabel.setBounds(400,150,200,200);
+
+        ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(chest));
+        objectLabel.setIcon(objectIcon);
+
+        bgPanel[bgNum].add(objectLabel);
+        bgPanel[bgNum].add(bgLabel[bgNum]);
+
+       // JLabel objectLabel2 = new JLabel();
+        //objectLabel2.setBounds(440,120,200,200);
+
+        //ImageIcon objectIcon2 = new ImageIcon(getClass().getClassLoader().getResource("minion.jpg"));
+        //objectLabel.setIcon(objectIcon2);
+
+        //bgPanel[1].add(objectLabel2);
+        //bgPanel[1].add(bgLabel[1]);
+
+
+    }
+
+    public void generateScreen(){
+
+        // Screen1
+        createBackground(1, "forest.jpg");
+        createObject(1,440,140,200,200,"chest.png");
     }
 }
