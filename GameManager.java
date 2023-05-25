@@ -8,6 +8,6 @@ class  GameManager{
         new GameManager();
     }
     public GameManager(){
-xdddddd
+xddddddxdxd
     }
 }

@@ -11,7 +11,7 @@ public class UI {
     public UI(GameManager gm){
 xd
         this.gm = gm;
-
+xd
         createMainField();
         generateScreen();
 
@@ -35,7 +35,7 @@ xd
         messageText.setLineWrap(true);
         messageText.setWrapStyleWord(true);
         messageText.setFont(new Font("Book Antiqua", Font.PLAIN, 26));
-        window.add(messageText); xd
+        window.add(messageText); xdxd
     }
     public void createBackground(int bgNum, String bgFileName){
 
@@ -49,7 +49,7 @@ xd
 
         ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("forest.jpg"));
         bgLabel[bgNum].setIcon(bgIcon);
-        bgPanel[bgNum].add(bgLabel[1]); xd
+        bgPanel[bgNum].add(bgLabel[1]); xdxd
     }
     public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String chest){
 
@@ -59,7 +59,7 @@ xd
 
         ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(chest));
         objectLabel.setIcon(objectIcon);
-xd
+xdxd
         bgPanel[bgNum].add(objectLabel);
         bgPanel[bgNum].add(bgLabel[bgNum]);
 
