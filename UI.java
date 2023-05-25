@@ -9,7 +9,7 @@ public class UI {
     public JLabel bgLabel[] = new JLabel[10];
 
     public UI(GameManager gm){
-
+xd
         this.gm = gm;
 
         createMainField();
@@ -35,7 +35,7 @@ public class UI {
         messageText.setLineWrap(true);
         messageText.setWrapStyleWord(true);
         messageText.setFont(new Font("Book Antiqua", Font.PLAIN, 26));
-        window.add(messageText);
+        window.add(messageText); xd
     }
     public void createBackground(int bgNum, String bgFileName){
 
@@ -49,7 +49,7 @@ public class UI {
 
         ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("forest.jpg"));
         bgLabel[bgNum].setIcon(bgIcon);
-        bgPanel[bgNum].add(bgLabel[1]);
+        bgPanel[bgNum].add(bgLabel[1]); xd
     }
     public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String chest){
 
@@ -59,7 +59,7 @@ public class UI {
 
         ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(chest));
         objectLabel.setIcon(objectIcon);
-
+xd
         bgPanel[bgNum].add(objectLabel);
         bgPanel[bgNum].add(bgLabel[bgNum]);
 
