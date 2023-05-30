@@ -1,5 +1,7 @@
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.MouseEvent;
+import java.awt.event.MouseListener;
 
 public class UI {
     GameManager gm;
@@ -9,9 +11,9 @@ public class UI {
     public JLabel bgLabel[] = new JLabel[10];
 
     public UI(GameManager gm){
-xd
+
         this.gm = gm;
-xd
+
         createMainField();
         generateScreen();
 
@@ -35,7 +37,7 @@ xd
         messageText.setLineWrap(true);
         messageText.setWrapStyleWord(true);
         messageText.setFont(new Font("Book Antiqua", Font.PLAIN, 26));
-        window.add(messageText); xdxd
+        window.add(messageText);
     }
     public void createBackground(int bgNum, String bgFileName){
 
@@ -49,17 +51,65 @@ xd
 
         ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("forest.jpg"));
         bgLabel[bgNum].setIcon(bgIcon);
-        bgPanel[bgNum].add(bgLabel[1]); xdxd
+        bgPanel[bgNum].add(bgLabel[1]);
     }
-    public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String chest){
+    public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String chest,
+                             String choice1Name, String choice2Name, String choice3Name){
 
+        //Create pop menu
+        JPopupMenu popMenu = new JPopupMenu();
+        // create pop menu items
+        JMenuItem menuItem[] = new JMenuItem[4];
+        menuItem[1] = new JMenuItem(choice1Name);
+        menuItem[1].addActionListener(gm.aHandler);
+        menuItem[1].setActionCommand("");
+        popMenu.add(menuItem[1]);
+
+        menuItem[2] = new JMenuItem(choice2Name);
+        menuItem[2].addActionListener(gm.aHandler);
+        menuItem[2].setActionCommand("");
+        popMenu.add(menuItem[2]);
+
+        menuItem[3] = new JMenuItem(choice3Name);
+        menuItem[3].addActionListener(gm.aHandler);
+        menuItem[3].setActionCommand("");
+        popMenu.add(menuItem[3]);
+
+        // create objects
         JLabel objectLabel = new JLabel();
         objectLabel.setBounds(objx,objy,objWidth,objHeight);
         //objectLabel.setBounds(400,150,200,200);
 
         ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(chest));
         objectLabel.setIcon(objectIcon);
-xdxd
+
+        objectLabel.addMouseListener(new MouseListener() {
+
+                                         public void mouseClicked(MouseEvent e) {
+                                         }
+
+                                         public void mousePressed(MouseEvent e) {
+
+                                             if (SwingUtilities.isRightMouseButton(e)) {
+                                                 popMenu.show(objectLabel, e.getX(), e.getY());
+                                             }
+
+                                         }
+
+                                         public void mouseReleased(MouseEvent e) {
+                                         }
+
+                                         public void mouseEntered(MouseEvent e) {
+                                         }
+
+                                         public void mouseExited(MouseEvent e) {
+                                         }
+
+                                     });
+
+
+
+
         bgPanel[bgNum].add(objectLabel);
         bgPanel[bgNum].add(bgLabel[bgNum]);
 
@@ -79,6 +129,7 @@ xdxd
 
         // Screen1
         createBackground(1, "forest.jpg");
-        createObject(1,440,140,200,200,"chest.png");
+        createObject(1,340,140,200,200,"chest.png", "eat", "meat", "open");
+        createObject(1,140,140,200,200,"minion.png", "cool", "pressable", "buttons");
     }
 }
