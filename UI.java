@@ -54,7 +54,7 @@ public class UI {
         bgPanel[bgNum].add(bgLabel[1]);
     }
     public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String chest,
-                             String choice1Name, String choice2Name, String choice3Name){
+                             String choice1Name, String choice2Name, String choice3Name, String choice1Command, String choice2Command, String choice3Command){
 
         //Create pop menu
         JPopupMenu popMenu = new JPopupMenu();
@@ -62,17 +62,17 @@ public class UI {
         JMenuItem menuItem[] = new JMenuItem[4];
         menuItem[1] = new JMenuItem(choice1Name);
         menuItem[1].addActionListener(gm.aHandler);
-        menuItem[1].setActionCommand("");
+        menuItem[1].setActionCommand(choice1Command);
         popMenu.add(menuItem[1]);
 
         menuItem[2] = new JMenuItem(choice2Name);
         menuItem[2].addActionListener(gm.aHandler);
-        menuItem[2].setActionCommand("");
+        menuItem[2].setActionCommand(choice2Command);
         popMenu.add(menuItem[2]);
 
         menuItem[3] = new JMenuItem(choice3Name);
         menuItem[3].addActionListener(gm.aHandler);
-        menuItem[3].setActionCommand("");
+        menuItem[3].setActionCommand(choice3Command);
         popMenu.add(menuItem[3]);
 
         // create objects
@@ -129,7 +129,7 @@ public class UI {
 
         // Screen1
         createBackground(1, "forest.jpg");
-        createObject(1,340,140,200,200,"chest.png", "eat", "meat", "open");
-        createObject(1,140,140,200,200,"minion.png", "cool", "pressable", "buttons");
+        createObject(1,340,140,200,200,"chest.png", "eat", "meat", "open" , "yesyesyes" , "oldboys" , "rovers");
+        createObject(1,140,140,200,200,"minion.png", "cool", "pressable", "buttons" , "minionminion" , "chief sosa" , "cobra");
     }
 }
