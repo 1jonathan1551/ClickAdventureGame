@@ -130,6 +130,6 @@ public class UI {
         // Screen1
         createBackground(1, "forest.jpg");
         createObject(1,340,140,200,200,"chest.png", "eat", "meat", "open" , "yesyesyes" , "oldboys" , "rovers");
-        createObject(1,140,140,200,200,"minion.png", "cool", "pressable", "buttons" , "minionminion" , "chief sosa" , "cobra");
+        createObject(1,140,140,200,200,"minion.png", "cool", "pressable", "buttons" , "minionminion" , "chiefsosa" , "cobra");
     }
 }

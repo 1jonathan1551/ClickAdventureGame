@@ -16,9 +16,9 @@ public class ActionHandler implements ActionListener {
         String yourChoice = e.getActionCommand();
 
         switch(yourChoice) {
-            case "yesyesyes": gm.ui.messageText.setText("malachi a human xddd"); break;
-            case "oldboys": gm.ui.messageText.setText("disrespectful"); break;
-            case "rovers": gm.ui.messageText.setText("range"); break;
+            case "yesyesyes": gm.ev1.yesyesyes(); break;
+            case "oldboys": gm.ev1.oldboys(); break;
+            case "rovers": gm.ev1.rovers(); break;
 
         }
     }

@@ -9,12 +9,24 @@ public class event01 {
     }
 
     public void yesyesyes(){
-
+gm.ui.messageText.setText("malachi a human");
     }
     public void oldboys(){
-
+        gm.ui.messageText.setText("disrespectful");
     }
-    public void rover(){
-
+    public void rovers(){
+        gm.ui.messageText.setText("range");
     }
+
+    public void minionminion(){
+        gm.ui.messageText.setText("range");
+    }
+    public void chiefsosa(){
+        gm.ui.messageText.setText("range");
+    }
+    public void cobra(){
+        gm.ui.messageText.setText("range");
+    }
+
+
 }

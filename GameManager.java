@@ -2,8 +2,11 @@
 import javax.swing.*;
 class  GameManager{
 
+
     ActionHandler aHandler = new ActionHandler(this);
-    UI ui = new UI(this);
+   public UI ui = new UI(this);
+
+    public event01 ev1 = new event01(this);
 
     public static void main(String[] args) {
 
