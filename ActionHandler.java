@@ -19,7 +19,9 @@ public class ActionHandler implements ActionListener {
             case "yesyesyes": gm.ev1.yesyesyes(); break;
             case "oldboys": gm.ev1.oldboys(); break;
             case "rovers": gm.ev1.rovers(); break;
-
+            case "minionminion": gm.ev1.minionminion(); break;
+            case "chiefsosa": gm.ev1.chiefsosa(); break;
+            case "cobra": gm.ev1.cobra(); break;
         }
     }
 }
