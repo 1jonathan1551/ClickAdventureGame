@@ -113,27 +113,17 @@ public class UI {
         bgPanel[bgNum].add(objectLabel);
         bgPanel[bgNum].add(bgLabel[bgNum]);
 
+       // JLabel objectLabel2 = new JLabel();
+        //objectLabel2.setBounds(440,120,200,200);
 
+        //ImageIcon objectIcon2 = new ImageIcon(getClass().getClassLoader().getResource("minion.jpg"));
+        //objectLabel.setIcon(objectIcon2);
+
+        //bgPanel[1].add(objectLabel2);
+        //bgPanel[1].add(bgLabel[1]);
 
 
     }
-public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command){
-        ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
-
-        JButton arrowButton = new JButton();
-        arrowButton.setBounds(x,y,width,height);
-        arrowButton.setBackground(null);
-        arrowButton.setContentAreaFilled(false);
-        arrowButton.setFocusPainted(false);
-        arrowButton.setIcon(arrowIcon);
-        arrowButton.addActionListener(gm.aHandler);
-        arrowButton.setActionCommand(command);
-        arrowButton.setBorderPainted(false);
-
-        bgPanel[bgNum].add(arrowButton);
-
-
-}
 
     public void generateScreen(){
 
@@ -141,13 +131,5 @@ public void createArrowButton(int bgNum, int x, int y, int width, int height, St
         createBackground(1, "forest.jpg");
         createObject(1,340,140,200,200,"chest.png", "eat", "meat", "open" , "yesyesyes" , "oldboys" , "rovers");
         createObject(1,140,140,200,200,"minion.png", "cool", "pressable", "buttons" , "minionminion" , "chiefsosa" , "cobra");
-        createArrowButton(1,0,150,50,50,"sideswipe.png", "goscene2");
-        bgPanel[1].add(bgLabel[1]);
-
-        // Screen2
-        createBackground(2, "93556");
-
-        createArrowButton(2,650,150,50,50, "rightarrow.png", "goScene1");
-        bgPanel[2].add(bgLabel[2]);
     }
 }
