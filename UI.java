@@ -113,17 +113,26 @@ public class UI {
         bgPanel[bgNum].add(objectLabel);
         bgPanel[bgNum].add(bgLabel[bgNum]);
 
-       // JLabel objectLabel2 = new JLabel();
-        //objectLabel2.setBounds(440,120,200,200);
 
-        //ImageIcon objectIcon2 = new ImageIcon(getClass().getClassLoader().getResource("minion.jpg"));
-        //objectLabel.setIcon(objectIcon2);
-
-        //bgPanel[1].add(objectLabel2);
-        //bgPanel[1].add(bgLabel[1]);
 
 
     }
+public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command){
+        ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
+
+        JButton arrowButton = new JButton();
+        arrowButton.setBounds(x,y,width,height);
+        arrowButton.setBackground(null);
+        arrowButton.setContentAreaFilled(false);
+        arrowButton.setFocusPainted(false);
+        arrowButton.setIcon(arrowIcon);
+        arrowButton.addActionListener(gm.aHandler);
+        arrowButton.setActionCommand(command);
+
+        bgPanel[bgNum].add(arrowButton);
+
+
+}
 
     public void generateScreen(){
 
