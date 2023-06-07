@@ -19,16 +19,16 @@ public class Event02 {
         }
         else {
             gm.sChanger.showScene3();
-//			gm.playSE(gm.enter);
+
         }
     }
-    public void lookRoot() {
-        gm.ui.messageText.setText("There is something at the tree.");
+    public void lookBag() {
+        gm.ui.messageText.setText("Seems to be a bag on the ground.");
     }
-    public void talkRoot() {
-        gm.ui.messageText.setText("They say plants grow well if you talk to them but this tree doesn't look like it needs encouragement.");
+    public void talkBag() {
+        gm.ui.messageText.setText("I don't think it's gonna respond to me.");
     }
-    public void searchRoot() {
+    public void searchBag() {
         gm.ui.messageText.setText("You find a lantern!");
         gm.ui.lantern.setVisible(true);
         gm.player.hasLantern=1;

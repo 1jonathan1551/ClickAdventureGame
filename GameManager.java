@@ -1,9 +1,9 @@
 
-import javax.swing.*;
+
 class  GameManager{
 
     // MAIN CLASS
-    ActionHandler aHandler = new ActionHandler(this);	// Instantiate before UI class otherwise action won't work
+    ActionHandler aHandler = new ActionHandler(this);
     public UI ui = new UI(this);
     public Player player = new Player(this);
     public SceneChanger sChanger = new SceneChanger(this);

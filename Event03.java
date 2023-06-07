@@ -13,7 +13,7 @@ public class Event03 {
             gm.ui.messageText.setText("The monster is dead...");
         }
         else {
-            gm.ui.messageText.setText("It's a monster!");
+            gm.ui.messageText.setText("It's the monster!");
         }
     }
     public void talkMonster() {

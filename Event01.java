@@ -8,7 +8,7 @@ public class Event01{
     }
 
     public void lookCabin() {
-        gm.ui.messageText.setText("This is your home.");
+        gm.ui.messageText.setText("Looks like a resting place.");
     }
     public void talkCabin() {
         gm.ui.messageText.setText("Who are you talking to?");
@@ -64,30 +64,30 @@ public class Event01{
                 if(gm.player.playerLife!=1) {
                     gm.ui.messageText.setText("Guard: Hey, don't be stupid!\n(The guard hits you back and your life decreases by 1)");
                     gm.player.playerLife--;
-//					gm.player.updatePlayerStatus();
+
 
 
                 }
                 else if(gm.player.playerLife==1) {
                     gm.ui.messageText.setText("Guard: What a fool...");
                     gm.player.playerLife--;
-//					gm.player.updatePlayerStatus();
+
                     gm.sChanger.showGameOverScreen(1);
-//					gm.playSE(gm.guard03);
+
                 }
             }
             else {
-                gm.ui.messageText.setText("Guard: Oh, shit!\n(You defeated the guard and got his shield!)");
+                gm.ui.messageText.setText("Guard: Oh, no!\n(You defeated the guard and got his shield!)");
                 gm.ui.shield.setVisible(true);
                 gm.player.hasShield=1;
                 gm.player.shieldPower=1;
-//				gm.player.updatePlayerStatus();
+
 
             }
             gm.player.updatePlayerStatus();
         }
         else {
-            gm.ui.messageText.setText("Guard: Just leave me alone.");
+            gm.ui.messageText.setText("Guard: You have bested me.");
 
         }
     }

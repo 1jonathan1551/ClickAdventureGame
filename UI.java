@@ -50,7 +50,7 @@ public class UI {
     }
     public void createMainField() {
 
-        window = new JFrame("Awesome Quest III");
+        window = new JFrame("Jonathan Awesome Game");
         window.setSize(800,600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
@@ -91,18 +91,18 @@ public class UI {
         bgPanel[num].setBounds(50,50,700,350);
         bgPanel[num].setBackground(Color.black);
         bgPanel[num].setLayout(null);
-        bgPanel[num].setVisible(false); // So panel 2 or later panels doesn't show up at the beginning
+        bgPanel[num].setVisible(false);
         window.add(bgPanel[num]);
 
         bgLabel[num] = new JLabel();
         bgLabel[num].setBounds(0,0,700,350);
 
         ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource(bgFileName));
-        Image image = bgIcon.getImage().getScaledInstance(700, 350, Image.SCALE_DEFAULT); // Adjust the size to the label
+        Image image = bgIcon.getImage().getScaledInstance(700, 350, Image.SCALE_DEFAULT);
         bgIcon = new ImageIcon(image);
         bgLabel[num].setIcon(bgIcon);
 
-//		bgPanel[num].add(bgLabel[num]);  DON'T ADD Background image to the panel yet!!!!
+		bgPanel[num].add(bgLabel[num]);
     }
     public void createObject(int bgNum, int objX, int objY, int objWidth, int objHeight, String objFileName,
                              String choice1Name, String choice2Name, String choice3Name, String choice1Command, String choice2Command, String choice3Command) {
@@ -111,7 +111,7 @@ public class UI {
         JPopupMenu popMenu = new JPopupMenu();
 
         // CREATE POP MENU ITEMS
-        JMenuItem menuItem[] = new JMenuItem[4]; // Use [1], [2], [3]
+        JMenuItem menuItem[] = new JMenuItem[4];
         menuItem[1] = new JMenuItem(choice1Name);
         menuItem[1].addActionListener(gm.aHandler);
         menuItem[1].setActionCommand(choice1Command);
@@ -130,8 +130,7 @@ public class UI {
         // CREATE OBJECTS
         JLabel objectLabel = new JLabel();
         objectLabel.setBounds(objX,objY,objWidth,objHeight);
-//		objectLabel.setOpaque(true);  // Use this when you want to check where the blank object is
-//		objectLabel.setBackground(Color.blue);  // Use this when you want to check where the blank object is
+
 
         ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
         Image image = objectIcon.getImage().getScaledInstance(objWidth, objHeight, Image.SCALE_DEFAULT);
@@ -199,21 +198,21 @@ public class UI {
 
         // CREATE SWORD
         sword = new JLabel();
-        ImageIcon swordIcon = new ImageIcon(getClass().getClassLoader().getResource("sword.png"));
+        ImageIcon swordIcon = new ImageIcon(getClass().getClassLoader().getResource("sword.jpg"));
         image = swordIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
         swordIcon = new ImageIcon(image);
         sword.setIcon(swordIcon);
         inventoryPanel.add(sword);
 
         shield = new JLabel();
-        ImageIcon shieldIcon = new ImageIcon(getClass().getClassLoader().getResource("shield.png"));
+        ImageIcon shieldIcon = new ImageIcon(getClass().getClassLoader().getResource("shield.jpg"));
         image = shieldIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
         shieldIcon = new ImageIcon(image);
         shield.setIcon(shieldIcon);
         inventoryPanel.add(shield);
 
         lantern = new JLabel();
-        ImageIcon lanternIcon = new ImageIcon(getClass().getClassLoader().getResource("lantern.png"));
+        ImageIcon lanternIcon = new ImageIcon(getClass().getClassLoader().getResource("lantern.jpg"));
         image = lanternIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
         lanternIcon = new ImageIcon(image);
         lantern.setIcon(lanternIcon);
@@ -240,11 +239,11 @@ public class UI {
         window.add(restartButton);
     }
 
-    // SCREEN GENERATION
+
     public void generateScreen() {
         // SCREEN1
-        createBackgroundImage(1,"forest.png"); // bgPanelNum, fileName
-        createObject(1,450,130,250,200,"hut.png","Look","Talk","Rest","lookCabin","talkCabin","restCabin");
+        createBackgroundImage(1,"forest.jpg");
+        createObject(1,450,130,250,200,"realhut.png","Look","Talk","Rest","lookCabin","talkCabin","restCabin");
         createObject(1,300,285,70,52,"chest.png","Look","Talk","Open","lookChest","talkChest","openChest");
         createObject(1,70,180,136,150,"guard.png","Look","Talk","Attack","lookGuard","talkGuard","attackGuard");
         createArrowButton(1,0,170,50,50,"leftarrow.png","goScreen2");
@@ -252,17 +251,15 @@ public class UI {
 
         // SCREEN2
         createBackgroundImage(2,"cave.png");
-        createObject(2,390,350,70,300,"image//blank100x100.png","Look","Talk","Enter","lookCave","talkCave","enterCave");
-        createObject(2,355,250,50,50,"image//blank100x100.png","Look","Talk","Search","lookRoot","talkRoot","searchRoot");
-        createArrowButton(2,650,170,50,50,"image//rightarrow50x50.png","goScreen1");
+        createObject(2,355,300,70,300,"blank.png","Look","Talk","Enter","lookCave","talkCave","enterCave");
+        createObject(2,355,250,50,50,"bag.jpg","Look","Talk","Search","lookRoot","talkRoot","searchRoot");
+        createArrowButton(2,650,170,50,50,"rightarrow.png","goScreen1");
         bgPanel[2].add(bgLabel[2]);
 
         // SCREEN3
-        createBackgroundImage(3,"image//cave.png");
-//		createObject(3,250,80,270,250,"image//halloween-3973250_1280.png","Look","Talk","Enter","lookCave","talkCave","enterCave");
-        createObject(3,250,80,200,250,"image//werewolf 200x300.png","Look","Talk","Attack","lookMonster","talkMonster","attackMonster");
-        createArrowButton(3,650,170,50,50,"image//rightarrow50x50.png","goScreen2");
-//		createArrowButton(3,325,50,50,50,"uparrow50x50.png","goScreen1");
+        createBackgroundImage(3,"insidecave.jpg");
+        createObject(3,250,80,200,250,"werewolf.png","Look","Talk","Attack","lookMonster","talkMonster","attackMonster");
+        createArrowButton(3,650,170,50,50,"rightarrow2.png","goScreen2");
         bgPanel[3].add(bgLabel[3]);
     }
 

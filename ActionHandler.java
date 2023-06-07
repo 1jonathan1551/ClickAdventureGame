@@ -13,7 +13,7 @@ public class ActionHandler implements ActionListener{
     @Override
     public void actionPerformed(ActionEvent e) {
 
-        System.out.println("here?");
+        System.out.println("working");
 
         String yourChoice = e.getActionCommand();
 
@@ -32,18 +32,16 @@ public class ActionHandler implements ActionListener{
             case "lookCave": gm.ev2.lookCave();break;
             case "enterCave": gm.ev2.enterCave();break;
             case "talkCave": gm.ev2.talkCave();break;
-            case "lookRoot": gm.ev2.lookRoot();break;
-            case "searchRoot": gm.ev2.searchRoot();break;
-            case "talkRoot": gm.ev2.talkRoot();break;
+            case "lookBag": gm.ev2.lookBag();break;
+            case "searchBag": gm.ev2.searchBag();break;
+            case "talkBag": gm.ev2.talkBag();break;
             // Scene 3
-//		case "noway": gm.sChanger.showGameOverScreen(3); gm.ui.messageText.setText("What a fool...");break;
             case "lookMonster": gm.ev3.lookMonster();break;
             case "talkMonster": gm.ev3.talkMonster();break;
             case "attackMonster": gm.ev3.attackMonster();break;
             // Change Screen
             case "goScreen1": gm.sChanger.showScene1();break;
             case "goScreen2": gm.sChanger.showScene2();break;
-            // Others
             case "restart": gm.sChanger.exitGameOverScreen(); gm.player.setPlayerDefaultStatus(); gm.sChanger.showScene1();break;
         }
     }

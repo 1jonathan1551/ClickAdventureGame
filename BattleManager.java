@@ -14,7 +14,7 @@ public class BattleManager {
         this.gm = gm;
     }
     public void resetMonsterLife() {
-        // add all the monsters if needed
+
         werewolf.monsterLife = werewolf.monsterMaxLife;
     }
 

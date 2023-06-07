@@ -11,7 +11,7 @@ public class SceneChanger{
 
         gm.ui.bgPanel[1].setVisible(true);
         gm.ui.bgPanel[2].setVisible(false);
-        gm.ui.messageText.setText("Let's defeat the Demon Lord and save the world!");
+        gm.ui.messageText.setText("Defeat the monster then rest at hut to win!");
 
 
     }
@@ -34,17 +34,14 @@ public class SceneChanger{
 
 
         if(gm.player.defeatWerewolf==false) {
-            gm.ui.messageText.setText("OMG the cave is inhabited by a werewolf!");
+            gm.ui.messageText.setText("There is the monster!");
 
         }
         else {
             gm.ui.messageText.setText("");
 
         }
-//		gm.ui.messageText.setText("You enter the cave. What is waiting for you inside...?\n\n"
-//		+ "*** This is the end of the Demo. Thank you for playing! ***");
-//		gm.ui.choiceB1.setVisible(true);
-//		gm.ui.choiceB2.setVisible(true);
+
     }
     public void showGameOverScreen(int currentBgNum) {
 
@@ -52,8 +49,7 @@ public class SceneChanger{
         gm.ui.titleLabel.setVisible(true);
         gm.ui.titleLabel.setText("YOU DIED");
         gm.ui.restartButton.setVisible(true);
-//		gm.ui.choiceB1.setVisible(false);
-//		gm.ui.choiceB2.setVisible(false);
+
 
 
     }
@@ -68,8 +64,8 @@ public class SceneChanger{
 
         gm.ui.bgPanel[currentBgNum].setVisible(false);
         gm.ui.titleLabel.setVisible(true);
-        gm.ui.titleLabel.setText("Congratz!");
-        gm.ui.messageText.setText("You have completed the Awesome Quest III!\nThanks for playing!");
+        gm.ui.titleLabel.setText("The End!");
+        gm.ui.messageText.setText("You are a brave warrior!\nThanks for playing!");
 //		gm.ui.restartButton.setVisible(true);
 
 
