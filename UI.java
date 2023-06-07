@@ -1,65 +1,117 @@
-import javax.swing.*;
-import java.awt.*;
+import java.awt.Color;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.Image;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JMenuItem;
+import javax.swing.JPanel;
+import javax.swing.JPopupMenu;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+
 public class UI {
-    GameManager gm;
+
+    // MAIN UI
     JFrame window;
     public JTextArea messageText;
-    public JPanel bgPanel[] = new JPanel[10];
-    public JLabel bgLabel[] = new JLabel[10];
+    public JPanel bgPanel[] = new JPanel[20];
+    JLabel bgLabel[] = new JLabel[20];
+    public JButton choiceB1,choiceB2;
 
-    public UI(GameManager gm){
+    // PLAYER UI
+    JPanel lifePanel;
+    JLabel life[] = new JLabel[6];
+    JPanel inventoryPanel;
+    public JLabel sword;
+    public JLabel lantern;
+    public JLabel shield;
+
+    // GAME OVER UI
+    public JLabel titleLabel;
+    public JButton restartButton;
+
+    // CLASS
+    GameManager gm;
+
+    public UI(GameManager gm) {
 
         this.gm = gm;
 
         createMainField();
+        createPlayerField();
+        createGameOverField();
         generateScreen();
-
-        window.setVisible(true);
     }
+    public void createMainField() {
 
-    public void createMainField(){
-
-        window = new JFrame();
+        window = new JFrame("Awesome Quest III");
         window.setSize(800,600);
         window.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         window.getContentPane().setBackground(Color.black);
         window.setLayout(null);
 
-        messageText = new JTextArea("Jonathan Awesome Game");
-        messageText.setBounds(230,70,700,150);
+        messageText = new JTextArea();
+        messageText.setBounds(50,410,700,150);
         messageText.setBackground(Color.black);
         messageText.setForeground(Color.white);
-        messageText.setOpaque(false);
         messageText.setEditable(false);
         messageText.setLineWrap(true);
         messageText.setWrapStyleWord(true);
-        messageText.setFont(new Font("Book Antiqua", Font.PLAIN, 26));
+        messageText.setFont(new Font("Times New Roman", Font.PLAIN, 26));
         window.add(messageText);
-    }
-    public void createBackground(int bgNum, String bgFileName){
+        choiceB1 = new JButton("Add to your wishlist");
+        choiceB1.setBounds(190,320,200,50);
+        choiceB1.setBackground(new Color(39,67,89));
+        choiceB1.setForeground(new Color(97,195,240));
+        choiceB1.setFocusPainted(false);
+        choiceB1.setFont(new Font("Arial", Font.PLAIN, 17));
+        choiceB1.setVisible(false);
+        window.add(choiceB1);
+        choiceB2 = new JButton("No way");
+        choiceB2.setBounds(400,320,200,50);
+        choiceB2.setBackground(new Color(39,67,89));
+        choiceB2.setForeground(new Color(97,195,240));
+        choiceB2.setFocusPainted(false);
+        choiceB2.setFont(new Font("Arial", Font.PLAIN, 17));
+        choiceB2.addActionListener(gm.aHandler);
+        choiceB2.setActionCommand("noway");
+        choiceB2.setVisible(false);
+        window.add(choiceB2);
 
-        bgPanel[bgNum] = new JPanel();
-        bgPanel[bgNum].setBounds(40, 100, 700,350);
-        bgPanel[bgNum].setBackground(Color.black);
-        bgPanel[bgNum].setLayout(null);
-        window.add(bgPanel[bgNum]);
-        bgLabel[bgNum] = new JLabel();
-        bgLabel[bgNum].setBounds(0,0,900,450);
+    }
+    public void createBackgroundImage(int num, String bgFileName) {
+
+        bgPanel[num] = new JPanel();
+        bgPanel[num].setBounds(50,50,700,350);
+        bgPanel[num].setBackground(Color.black);
+        bgPanel[num].setLayout(null);
+        bgPanel[num].setVisible(false); // So panel 2 or later panels doesn't show up at the beginning
+        window.add(bgPanel[num]);
+
+        bgLabel[num] = new JLabel();
+        bgLabel[num].setBounds(0,0,700,350);
 
         ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource(bgFileName));
-        bgLabel[bgNum].setIcon(bgIcon);
-        bgPanel[bgNum].add(bgLabel[bgNum]);
-    }
-    public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String chest,
-                             String choice1Name, String choice2Name, String choice3Name, String choice1Command, String choice2Command, String choice3Command){
+        Image image = bgIcon.getImage().getScaledInstance(700, 350, Image.SCALE_DEFAULT); // Adjust the size to the label
+        bgIcon = new ImageIcon(image);
+        bgLabel[num].setIcon(bgIcon);
 
-        //Create pop menu
+//		bgPanel[num].add(bgLabel[num]);  DON'T ADD Background image to the panel yet!!!!
+    }
+    public void createObject(int bgNum, int objX, int objY, int objWidth, int objHeight, String objFileName,
+                             String choice1Name, String choice2Name, String choice3Name, String choice1Command, String choice2Command, String choice3Command) {
+
+        // CREATE POP MENU
         JPopupMenu popMenu = new JPopupMenu();
-        // create pop menu items
-        JMenuItem menuItem[] = new JMenuItem[4];
+
+        // CREATE POP MENU ITEMS
+        JMenuItem menuItem[] = new JMenuItem[4]; // Use [1], [2], [3]
         menuItem[1] = new JMenuItem(choice1Name);
         menuItem[1].addActionListener(gm.aHandler);
         menuItem[1].setActionCommand(choice1Command);
@@ -75,83 +127,143 @@ public class UI {
         menuItem[3].setActionCommand(choice3Command);
         popMenu.add(menuItem[3]);
 
-        // create objects
+        // CREATE OBJECTS
         JLabel objectLabel = new JLabel();
-        objectLabel.setBounds(objx,objy,objWidth,objHeight);
-        //objectLabel.setBounds(400,150,200,200);
+        objectLabel.setBounds(objX,objY,objWidth,objHeight);
+//		objectLabel.setOpaque(true);  // Use this when you want to check where the blank object is
+//		objectLabel.setBackground(Color.blue);  // Use this when you want to check where the blank object is
 
-        ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(chest));
+        ImageIcon objectIcon = new ImageIcon(getClass().getClassLoader().getResource(objFileName));
+        Image image = objectIcon.getImage().getScaledInstance(objWidth, objHeight, Image.SCALE_DEFAULT);
+        objectIcon = new ImageIcon(image);
         objectLabel.setIcon(objectIcon);
 
         objectLabel.addMouseListener(new MouseListener() {
 
-                                         public void mouseClicked(MouseEvent e) {
-                                         }
+            public void mouseClicked(MouseEvent e) {}
+            public void mousePressed(MouseEvent e) {
+                if(SwingUtilities.isRightMouseButton(e)){
+                    popMenu.show(objectLabel, e.getX(), e.getY());
+                }
+            }
+            public void mouseReleased(MouseEvent e) {}
+            public void mouseEntered(MouseEvent e) {}
+            public void mouseExited(MouseEvent e) {}
 
-                                         public void mousePressed(MouseEvent e) {
-
-                                             if (SwingUtilities.isRightMouseButton(e)) {
-                                                 popMenu.show(objectLabel, e.getX(), e.getY());
-                                             }
-
-                                         }
-
-                                         public void mouseReleased(MouseEvent e) {
-                                         }
-
-                                         public void mouseEntered(MouseEvent e) {
-                                         }
-
-                                         public void mouseExited(MouseEvent e) {
-                                         }
-
-                                     });
-
-
-
-
+        });
         bgPanel[bgNum].add(objectLabel);
-        bgPanel[bgNum].add(bgLabel[bgNum]);
-
-       // JLabel objectLabel2 = new JLabel();
-        //objectLabel2.setBounds(440,120,200,200);
-
-        //ImageIcon objectIcon2 = new ImageIcon(getClass().getClassLoader().getResource("minion.jpg"));
-        //objectLabel.setIcon(objectIcon2);
-
-        //bgPanel[1].add(objectLabel2);
-        //bgPanel[1].add(bgLabel[1]);
-
-
     }
-    public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFilename, String command){
-        ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFilename));
+    public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFileName, String command) {
+
+        ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFileName));
+        Image image = arrowIcon.getImage().getScaledInstance(50, 50, Image.SCALE_DEFAULT);
+        arrowIcon = new ImageIcon(image);
 
         JButton arrowButton = new JButton();
         arrowButton.setBounds(x,y,width,height);
-        arrowButton.setBackground(null);
+        arrowButton.setBackground(Color.black);
         arrowButton.setContentAreaFilled(false);
-        arrowButton.setFocusPainted(false);
         arrowButton.setIcon(arrowIcon);
+        arrowButton.setBorderPainted(false);
         arrowButton.addActionListener(gm.aHandler);
         arrowButton.setActionCommand(command);
-        arrowButton.setBorderPainted(false);
+        arrowButton.setVisible(true);
 
         bgPanel[bgNum].add(arrowButton);
     }
+    public void createPlayerField() {
 
-    public void generateScreen(){
+        lifePanel = new JPanel();
+        lifePanel.setBounds(50,0,250,50);
+        lifePanel.setBackground(Color.black);
+        lifePanel.setLayout(new GridLayout(1,5));
+        window.add(lifePanel);
 
-        // Screen1
-        createBackground(1, "forest.jpg");
-        createObject(1,340,140,200,200,"chest.png", "eat", "meat", "open" , "yesyesyes" , "oldboys" , "rovers");
-        createObject(1,140,140,200,200,"minion.png", "cool", "pressable", "buttons" , "minionminion" , "chiefsosa" , "cobra");
-        createArrowButton(1,0,150,50,50,"sideswipe.png","goScene2");
+        ImageIcon lifeICon = new ImageIcon(getClass().getClassLoader().getResource("heart.jpg"));
+        Image image = lifeICon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
+        lifeICon = new ImageIcon(image);
+
+        int i =1;
+        while(i<6) {
+            life[i] = new JLabel();
+            life[i].setIcon(lifeICon);
+            lifePanel.add(life[i]);
+            i++;
+        }
+
+        inventoryPanel = new JPanel();
+        inventoryPanel.setBounds(650,0,100,50);
+        inventoryPanel.setBackground(Color.black);
+        inventoryPanel.setLayout(new GridLayout(1,3));
+        window.add(inventoryPanel);
+
+        // CREATE SWORD
+        sword = new JLabel();
+        ImageIcon swordIcon = new ImageIcon(getClass().getClassLoader().getResource("sword.png"));
+        image = swordIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
+        swordIcon = new ImageIcon(image);
+        sword.setIcon(swordIcon);
+        inventoryPanel.add(sword);
+
+        shield = new JLabel();
+        ImageIcon shieldIcon = new ImageIcon(getClass().getClassLoader().getResource("shield.png"));
+        image = shieldIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
+        shieldIcon = new ImageIcon(image);
+        shield.setIcon(shieldIcon);
+        inventoryPanel.add(shield);
+
+        lantern = new JLabel();
+        ImageIcon lanternIcon = new ImageIcon(getClass().getClassLoader().getResource("lantern.png"));
+        image = lanternIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
+        lanternIcon = new ImageIcon(image);
+        lantern.setIcon(lanternIcon);
+        inventoryPanel.add(lantern);
+    }
+    public void createGameOverField() {
+
+        titleLabel = new JLabel("",JLabel.CENTER);
+        titleLabel.setBounds(200,150,400,200);
+        titleLabel.setFont(new Font("Times New Roman",Font.PLAIN,70));
+        titleLabel.setForeground(Color.red);
+        titleLabel.setVisible(false);
+        window.add(titleLabel);
+
+        restartButton = new JButton("Click here to restart");
+        restartButton.setBounds(340,320,120,50);
+        restartButton.setBorder(null);
+        restartButton.setBackground(null);
+        restartButton.setForeground(Color.white);
+        restartButton.setFocusPainted(false);
+        restartButton.addActionListener(gm.aHandler);
+        restartButton.setActionCommand("restart");
+        restartButton.setVisible(false);
+        window.add(restartButton);
+    }
+
+    // SCREEN GENERATION
+    public void generateScreen() {
+        // SCREEN1
+        createBackgroundImage(1,"forest.png"); // bgPanelNum, fileName
+        createObject(1,450,130,250,200,"hut.png","Look","Talk","Rest","lookCabin","talkCabin","restCabin");
+        createObject(1,300,285,70,52,"chest.png","Look","Talk","Open","lookChest","talkChest","openChest");
+        createObject(1,70,180,136,150,"guard.png","Look","Talk","Attack","lookGuard","talkGuard","attackGuard");
+        createArrowButton(1,0,170,50,50,"leftarrow.png","goScreen2");
         bgPanel[1].add(bgLabel[1]);
 
-        // Screen 2
-        createBackground(2, "aa.jpg");
-        createArrowButton(2,650,150,50,50,"rightarrow.png", "goScene1");
+        // SCREEN2
+        createBackgroundImage(2,"cave.png");
+        createObject(2,390,350,70,300,"image//blank100x100.png","Look","Talk","Enter","lookCave","talkCave","enterCave");
+        createObject(2,355,250,50,50,"image//blank100x100.png","Look","Talk","Search","lookRoot","talkRoot","searchRoot");
+        createArrowButton(2,650,170,50,50,"image//rightarrow50x50.png","goScreen1");
         bgPanel[2].add(bgLabel[2]);
+
+        // SCREEN3
+        createBackgroundImage(3,"image//cave.png");
+//		createObject(3,250,80,270,250,"image//halloween-3973250_1280.png","Look","Talk","Enter","lookCave","talkCave","enterCave");
+        createObject(3,250,80,200,250,"image//werewolf 200x300.png","Look","Talk","Attack","lookMonster","talkMonster","attackMonster");
+        createArrowButton(3,650,170,50,50,"image//rightarrow50x50.png","goScreen2");
+//		createArrowButton(3,325,50,50,50,"uparrow50x50.png","goScreen1");
+        bgPanel[3].add(bgLabel[3]);
     }
+
 }

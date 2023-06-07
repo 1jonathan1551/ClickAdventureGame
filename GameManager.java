@@ -2,19 +2,37 @@
 import javax.swing.*;
 class  GameManager{
 
-
-    ActionHandler aHandler = new ActionHandler(this);
-   public UI ui = new UI(this);
+    // MAIN CLASS
+    ActionHandler aHandler = new ActionHandler(this);	// Instantiate before UI class otherwise action won't work
+    public UI ui = new UI(this);
+    public Player player = new Player(this);
     public SceneChanger sChanger = new SceneChanger(this);
-    public event01 ev1 = new event01(this);
+    public BattleManager bm = new BattleManager(this);
+
+    // EVENT CLASS
+    public Event01 ev1 = new Event01(this);
+    public Event02 ev2 = new Event02(this);
+    public Event03 ev3 = new Event03(this);
+
+    // SOUND
+
 
     public static void main(String[] args) {
 
-    new GameManager();
-
+        new GameManager();
     }
-    public GameManager(){
+    public GameManager() {
+
+
+
+        // SET SCREEN
+        player.setPlayerDefaultStatus();
         sChanger.showScene1();
-}
+
+        ui.window.setVisible(true);
+    }
+
+
 
 }
+
