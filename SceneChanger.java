@@ -11,7 +11,7 @@ public class SceneChanger{
 
         gm.ui.bgPanel[1].setVisible(true);
         gm.ui.bgPanel[2].setVisible(false);
-        gm.ui.messageText.setText("Defeat the monster then rest at hut to win!");
+        gm.ui.messageText.setText("Defeat the monster then rest at hut to win!\n (right click to select, left click to execute action)" );
 
 
     }
@@ -38,7 +38,7 @@ public class SceneChanger{
 
         }
         else {
-            gm.ui.messageText.setText("");
+            gm.ui.messageText.setText("There is the dead monster");
 
         }
 

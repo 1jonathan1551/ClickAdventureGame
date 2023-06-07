@@ -178,7 +178,7 @@ public class UI {
         lifePanel.setLayout(new GridLayout(1,5));
         window.add(lifePanel);
 
-        ImageIcon lifeICon = new ImageIcon(getClass().getClassLoader().getResource("heart.jpg"));
+        ImageIcon lifeICon = new ImageIcon(getClass().getClassLoader().getResource("heart.png"));
         Image image = lifeICon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
         lifeICon = new ImageIcon(image);
 
@@ -198,21 +198,21 @@ public class UI {
 
         // CREATE SWORD
         sword = new JLabel();
-        ImageIcon swordIcon = new ImageIcon(getClass().getClassLoader().getResource("sword.jpg"));
+        ImageIcon swordIcon = new ImageIcon(getClass().getClassLoader().getResource("SWORD.png"));
         image = swordIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
         swordIcon = new ImageIcon(image);
         sword.setIcon(swordIcon);
         inventoryPanel.add(sword);
 
         shield = new JLabel();
-        ImageIcon shieldIcon = new ImageIcon(getClass().getClassLoader().getResource("shield.jpg"));
+        ImageIcon shieldIcon = new ImageIcon(getClass().getClassLoader().getResource("SHIELD.png"));
         image = shieldIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
         shieldIcon = new ImageIcon(image);
         shield.setIcon(shieldIcon);
         inventoryPanel.add(shield);
 
         lantern = new JLabel();
-        ImageIcon lanternIcon = new ImageIcon(getClass().getClassLoader().getResource("lantern.jpg"));
+        ImageIcon lanternIcon = new ImageIcon(getClass().getClassLoader().getResource("lantern.png"));
         image = lanternIcon.getImage().getScaledInstance(35, 35, Image.SCALE_DEFAULT);
         lanternIcon = new ImageIcon(image);
         lantern.setIcon(lanternIcon);
@@ -243,7 +243,7 @@ public class UI {
     public void generateScreen() {
         // SCREEN1
         createBackgroundImage(1,"forest.jpg");
-        createObject(1,450,130,250,200,"realhut.png","Look","Talk","Rest","lookCabin","talkCabin","restCabin");
+        createObject(1,450,130,250,200,"hut.png","Look","Talk","Rest","lookCabin","talkCabin","restCabin");
         createObject(1,300,285,70,52,"chest.png","Look","Talk","Open","lookChest","talkChest","openChest");
         createObject(1,70,180,136,150,"guard.png","Look","Talk","Attack","lookGuard","talkGuard","attackGuard");
         createArrowButton(1,0,170,50,50,"leftarrow.png","goScreen2");
@@ -251,8 +251,8 @@ public class UI {
 
         // SCREEN2
         createBackgroundImage(2,"cave.png");
-        createObject(2,355,300,70,300,"blank.png","Look","Talk","Enter","lookCave","talkCave","enterCave");
-        createObject(2,355,250,50,50,"bag.jpg","Look","Talk","Search","lookRoot","talkRoot","searchRoot");
+        createObject(2,315,120,190,100,"blank.png","Look","Talk","Enter","lookCave","talkCave","enterCave");
+        createObject(2,280,280,50,50,"bag.png","Look","Talk","Search","lookBag","talkBag","searchBag");
         createArrowButton(2,650,170,50,50,"rightarrow.png","goScreen1");
         bgPanel[2].add(bgLabel[2]);
 
