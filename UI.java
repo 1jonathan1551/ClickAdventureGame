@@ -253,7 +253,7 @@ public class UI {
         createBackgroundImage(2,"cave.png");
         createObject(2,315,120,190,100,"blank.png","Look","Talk","Enter","lookCave","talkCave","enterCave");
         createObject(2,280,280,50,50,"bag.png","Look","Talk","Search","lookBag","talkBag","searchBag");
-        createArrowButton(2,650,170,50,50,"rightarrow.png","goScreen1");
+        createArrowButton(2,650,170,50,50,"rightarrow2.png","goScreen1");
         bgPanel[2].add(bgLabel[2]);
 
         // SCREEN3

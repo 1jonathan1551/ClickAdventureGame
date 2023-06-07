@@ -20,7 +20,7 @@ public class SceneChanger{
         gm.ui.bgPanel[1].setVisible(false);
         gm.ui.bgPanel[3].setVisible(false);
         gm.ui.bgPanel[2].setVisible(true);
-        gm.ui.messageText.setText("");
+        gm.ui.messageText.setText("There is a spooky cave ahead...");
 
 
 
