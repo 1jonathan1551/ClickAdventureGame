@@ -22,6 +22,9 @@ public class ActionHandler implements ActionListener {
             case "minionminion": gm.ev1.minionminion(); break;
             case "chiefsosa": gm.ev1.chiefsosa(); break;
             case "cobra": gm.ev1.cobra(); break;
+            // Change Scenes
+            case "goScene1": gm.sChanger.showScene1(); break;
+            case "goScene2": gm.sChanger.showScene2(); break;
         }
     }
 }

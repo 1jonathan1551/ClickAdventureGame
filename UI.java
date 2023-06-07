@@ -43,15 +43,15 @@ public class UI {
 
         bgPanel[bgNum] = new JPanel();
         bgPanel[bgNum].setBounds(40, 100, 700,350);
-        bgPanel[bgNum].setBackground(Color.green);
+        bgPanel[bgNum].setBackground(Color.black);
         bgPanel[bgNum].setLayout(null);
         window.add(bgPanel[bgNum]);
         bgLabel[bgNum] = new JLabel();
         bgLabel[bgNum].setBounds(0,0,900,450);
 
-        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource("forest.jpg"));
+        ImageIcon bgIcon = new ImageIcon(getClass().getClassLoader().getResource(bgFileName));
         bgLabel[bgNum].setIcon(bgIcon);
-        bgPanel[bgNum].add(bgLabel[1]);
+        bgPanel[bgNum].add(bgLabel[bgNum]);
     }
     public void createObject(int bgNum, int objx, int objy, int objWidth, int objHeight, String chest,
                              String choice1Name, String choice2Name, String choice3Name, String choice1Command, String choice2Command, String choice3Command){
@@ -124,6 +124,21 @@ public class UI {
 
 
     }
+    public void createArrowButton(int bgNum, int x, int y, int width, int height, String arrowFilename, String command){
+        ImageIcon arrowIcon = new ImageIcon(getClass().getClassLoader().getResource(arrowFilename));
+
+        JButton arrowButton = new JButton();
+        arrowButton.setBounds(x,y,width,height);
+        arrowButton.setBackground(null);
+        arrowButton.setContentAreaFilled(false);
+        arrowButton.setFocusPainted(false);
+        arrowButton.setIcon(arrowIcon);
+        arrowButton.addActionListener(gm.aHandler);
+        arrowButton.setActionCommand(command);
+        arrowButton.setBorderPainted(false);
+
+        bgPanel[bgNum].add(arrowButton);
+    }
 
     public void generateScreen(){
 
@@ -131,5 +146,12 @@ public class UI {
         createBackground(1, "forest.jpg");
         createObject(1,340,140,200,200,"chest.png", "eat", "meat", "open" , "yesyesyes" , "oldboys" , "rovers");
         createObject(1,140,140,200,200,"minion.png", "cool", "pressable", "buttons" , "minionminion" , "chiefsosa" , "cobra");
+        createArrowButton(1,0,150,50,50,"sideswipe.png","goScene2");
+        bgPanel[1].add(bgLabel[1]);
+
+        // Screen 2
+        createBackground(2, "aa.jpg");
+        createArrowButton(2,650,150,50,50,"rightarrow.png", "goScene1");
+        bgPanel[2].add(bgLabel[2]);
     }
 }

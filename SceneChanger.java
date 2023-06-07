@@ -6,12 +6,14 @@ public class SceneChanger {
         this.gm = gm;
     }
 
-    public void showScreen1(){
+    public void showScene1(){
         gm.ui.bgPanel[1].setVisible(true);
         gm.ui.bgPanel[2].setVisible(false);
+        gm.ui.messageText.setText("Scene 1");
     }
-    public void showScreen2(){
+    public void showScene2(){
         gm.ui.bgPanel[1].setVisible(false);
         gm.ui.bgPanel[2].setVisible(true);
+        gm.ui.messageText.setText("raris and rovers and da notin");
     }
 }
